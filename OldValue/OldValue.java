@@ -37,21 +37,8 @@ public class OldValue {
         int remainingPences = (pences - (pounds*240 + shillings*12));
         return new OldValue(pounds + "p",shillings + "s", remainingPences + "d");
     }
-
-    public String getPound() {
-        return pound;
-    }
-
-    public String getShilling() {
-        return shilling;
-    }
-
-    public String getPence() {
-        return pence;
-    }
-
     @Override
     public String toString() {
-        return '\n' + pound + '\t' + shilling + '\t' + pence;
+        return "\n" + pound + '\t' + shilling + '\t' + pence;
     }
 }
