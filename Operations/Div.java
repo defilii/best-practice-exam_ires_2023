@@ -7,8 +7,12 @@ public class Div implements OperationStrategy {
     @Override
     public OldValue doOperation(OldValue x, OldValue y) {
         int divResult;
+        int divRemainder;
         divResult = x.getValueInPence() / y.getValueInPence();
-        return convertPenceToOldValue(divResult);
+        divRemainder = x.getValueInPence() % y.getValueInPence();
+        OldValue oldValueResult = convertPenceToOldValue(divResult);
+        oldValueResult.setRemainder(convertPenceToOldValue(divRemainder));
+        return oldValueResult;
     }
 
     @Override

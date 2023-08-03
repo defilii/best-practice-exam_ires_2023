@@ -9,6 +9,8 @@ public class OldValue {
     private String shilling; //12 pence
     private String pence; //1 pence
 
+    private OldValue remainder;
+
     public OldValue(String pound, String shilling, String pence) {
         if (areParametersValid(pound, shilling, pence)) {
             this.pound = pound;
@@ -52,6 +54,19 @@ public class OldValue {
 
     @Override
     public String toString() {
-        return "\n" + pound + '\t' + shilling + '\t' + pence;
+        String toString = pound + '\t' + shilling + '\t' + pence;
+        if (remainder == null) {
+            return toString;
+        } else {
+            return toString + "\t(" + remainder + ")";
+        }
+    }
+
+    public OldValue getRemainder() {
+        return remainder;
+    }
+
+    public void setRemainder(OldValue remainder) {
+        this.remainder = remainder;
     }
 }
