@@ -10,9 +10,22 @@ public class OldValue {
     private String pence; //1 pence
 
     public OldValue(String pound, String shilling, String pence) {
-        this.pound = pound;
-        this.shilling = shilling;
-        this.pence = pence;
+        if (areParametersValid(pound, shilling, pence)) {
+            this.pound = pound;
+            this.shilling = shilling;
+            this.pence = pence;
+        } else throw new IllegalArgumentException();
+    }
+
+    private boolean areParametersValid(String pound, String shilling, String pence) {
+        Matcher p = Pattern.compile("(\\d+[p])").matcher(pound);
+        Matcher s = Pattern.compile("(\\d+[s])").matcher(shilling);
+        Matcher d = Pattern.compile("(\\d+[d])").matcher(pence);
+        if (p.matches() && s.matches() && d.matches()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getValueInPence() {
@@ -27,16 +40,16 @@ public class OldValue {
         Matcher valued = pattern.matcher(value);
         if (valued.matches()) {
             return Integer.parseInt(valued.group(1));
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
     }
 
-    public OldValue convertPencesToString(int pences){
-        int pounds = pences/240;
-        int shillings = (pences - pounds*240)/12;
-        int remainingPences = (pences - (pounds*240 + shillings*12));
-        return new OldValue(pounds + "p",shillings + "s", remainingPences + "d");
+    public OldValue convertPencesToString(int pences) {
+        int pounds = pences / 240;
+        int shillings = (pences - pounds * 240) / 12;
+        int remainingPences = (pences - (pounds * 240 + shillings * 12));
+        return new OldValue(pounds + "p", shillings + "s", remainingPences + "d");
     }
+
     @Override
     public String toString() {
         return "\n" + pound + '\t' + shilling + '\t' + pence;
