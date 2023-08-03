@@ -6,7 +6,7 @@ public class Sum implements OperationStrategy {
     @Override
     public OldValue doOperation(OldValue x, OldValue y) {
         int sumResult;
-        sumResult = x.getValueInPence() + y.getValueInPence();
+        sumResult = Math.abs(x.getValueInPence() + y.getValueInPence());
         return convertPenceToOldValue(sumResult);
     }
 

@@ -13,7 +13,8 @@ public class Main {
 //        OperationStrategy sum = new Sum();
 //        System.out.printf(String.valueOf(sum.doOperation(oldValue1, oldValue)));
         OperationManager operationManager = new OperationManager();
-        System.out.printf(operationManager.doArithmeticExpression("8p 0s 0d / 2p 0s 0d").toString());
+        System.out.printf(operationManager.doArithmeticExpression("8p 0s 0d - 9p 0s 0d").toString());
+        System.out.printf(operationManager.doArithmeticExpression("8p 0s 0d + 9p 0s 0d").toString());
         System.out.printf('\n' +operationManager.doArithmeticExpression("4p 2s 2d + 2p 0s 0d + 2p 3s 2d").toString());
     }
 

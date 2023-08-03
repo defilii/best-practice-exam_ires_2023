@@ -7,7 +7,12 @@ public class Sub implements OperationStrategy{
     public OldValue doOperation(OldValue x, OldValue y) {
         int subResult;
         subResult = x.getValueInPence() - y.getValueInPence();
-        return convertPenceToOldValue(subResult);
+        OldValue valueSubResult = convertPenceToOldValue(Math.abs(subResult));
+        if (subResult < 0) {
+            valueSubResult = convertPenceToOldValue(0);
+            valueSubResult.setRemainder(convertPenceToOldValue(Math.abs(subResult)));
+        }
+        return valueSubResult;
     }
 
     @Override
